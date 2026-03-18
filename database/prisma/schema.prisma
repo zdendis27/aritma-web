@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  role      UserRole @default(ADMIN)
+  createdAt DateTime @default(now())
+}
+
+model Team {
+  id        String   @id @default(cuid())
+  name      String
+  category  String
+  createdAt DateTime @default(now())
+  players   Player[]
+  matches   Match[]
+}
+
+model Player {
+  id       String @id @default(cuid())
+  name     String
+  position String
+  number   Int
+  photo    String
+  teamId   String
+  team     Team   @relation(fields: [teamId], references: [id], onDelete: Cascade)
+}
+
+model Match {
+  id          String   @id @default(cuid())
+  homeTeam    String
+  awayTeam    String
+  homeScore   Int?
+  awayScore   Int?
+  competition String
+  date        DateTime
+  stadium     String
+  teamId      String
+  team        Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+}
+
+model Article {
+  id        String   @id @default(cuid())
+  title     String
+  content   String   @db.Text
+  image     String
+  author    String
+  createdAt DateTime @default(now())
+}
+
+model Gallery {
+  id        String   @id @default(cuid())
+  image     String
+  title     String
+  createdAt DateTime @default(now())
+}

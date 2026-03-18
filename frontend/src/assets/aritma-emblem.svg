@@ -1,0 +1,25 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path id="topArc" d="M 92 255 A 164 164 0 0 1 420 255" />
+    <path id="bottomArc" d="M 402 257 A 146 146 0 0 1 110 257" />
+  </defs>
+
+  <circle cx="256" cy="256" r="244" fill="#3B3F9C" />
+  <circle cx="256" cy="256" r="175" fill="#FFFFFF" />
+  <circle cx="256" cy="256" r="136" fill="#3B3F9C" />
+
+  <rect x="24" y="239" width="464" height="36" fill="#FFFFFF" />
+  <rect x="96" y="239" width="320" height="36" fill="#3B3F9C" />
+
+  <text fill="#FFFFFF" font-size="64" font-family="Arial, Helvetica, sans-serif" font-weight="900" letter-spacing="6">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">ARITMA PRAHA</textPath>
+  </text>
+
+  <text fill="#3B3F9C" font-size="70" font-family="Arial, Helvetica, sans-serif" font-weight="900" letter-spacing="7">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">FOTBAL</textPath>
+  </text>
+
+  <text x="256" y="307" fill="#FFFFFF" font-size="104" font-family="Arial, Helvetica, sans-serif" font-weight="900" text-anchor="middle">
+    SK
+  </text>
+</svg>

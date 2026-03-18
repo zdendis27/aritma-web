@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: aritma-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: aritma_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+    container_name: aritma-backend
+    restart: unless-stopped
+    environment:
+      PORT: 4000
+      CLIENT_URL: http://localhost:8080
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/aritma_db?schema=public
+      JWT_SECRET: super-secret-aritma-key
+    depends_on:
+      - db
+    ports:
+      - "4000:4000"
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: frontend/Dockerfile
+      args:
+        VITE_API_URL: http://localhost:4000/api
+    container_name: aritma-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  postgres_data:
