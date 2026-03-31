@@ -77,6 +77,13 @@ Kompletní lokální stack:
 docker compose -f docker/docker-compose.yml up --build
 ```
 
+## Dokumentace a poster
+
+- Technická dokumentace: `dokumentace/technicka-dokumentace.md`
+- Uživatelská dokumentace: `dokumentace/uzivatelska-dokumentace.md`
+- Poster HTML: `poster/poster-a4.html`
+- Poster PDF: `poster/poster-a4.pdf`
+
 ## Databázový model
 
 - `User`: admin uživatel
